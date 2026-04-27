@@ -1,6 +1,6 @@
 async function loadPredictions() {
   try {
-    const response = await fetch('https://raw.githubusercontent.com/YOURUSERNAME/football-betting-dashboard/main/data/predictions.json');
+    const response = await fetch('https://raw.githubusercontent.com/Proofmaster/football-betting-dashboard/main/data/predictions.json');
     const matches = await response.json();
     
     const container = document.getElementById('matches');
