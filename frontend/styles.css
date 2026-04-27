@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.value-positive {
+  background-color: rgb(16 185 129);
+  color: black;
+  font-weight: bold;
+}
