@@ -10,52 +10,31 @@ LEAGUES = ["E0","E1","E2","E3","EC","SP1","SP2","I1","I2","F1","F2","D1","D2","P
 MIN_EDGE = 0.05
 # =======================================================
 
-print("Fetching fixtures and building xG-style model...")
+print("Fetching fixtures + historical data for detailed previews...")
 
-# 1. Get historical results for strength calculation (last ~2 seasons where possible)
+# 1. Download recent historical results (current season + previous)
 historical_urls = [
-    "https://www.football-data.co.uk/mmz4281/2425/E0.csv",  # Example: adjust seasons as needed
-    "https://www.football-data.co.uk/mmz4281/2324/E0.csv",
-    # Add more leagues/seasons if you want (we'll start simple with E0 and expand later)
+    "https://www.football-data.co.uk/mmz4281/2526/Latest_Results.csv",  # 2025/26 current
+    "https://www.football-data.co.uk/mmz4281/2425/E0.csv",              # previous season examples
+    "https://www.football-data.co.uk/mmz4281/2425/I1.csv",
+    "https://www.football-data.co.uk/mmz4281/2425/SP1.csv",
 ]
 
 hist_dfs = []
 for url in historical_urls:
     try:
-        df_hist = pd.read_csv(url)
-        hist_dfs.append(df_hist)
+        df = pd.read_csv(url, dtype=str)
+        hist_dfs.append(df)
     except:
         pass
 
-if hist_dfs:
-    historical = pd.concat(hist_dfs, ignore_index=True)
-    print(f"Loaded {len(historical)} historical matches for strength calculation.")
-else:
-    historical = pd.DataFrame()
-    print("Using default strengths (no historical data loaded).")
+historical = pd.concat(hist_dfs, ignore_index=True) if hist_dfs else pd.DataFrame()
+historical['Date'] = pd.to_datetime(historical['Date'], format='mixed', dayfirst=True, errors='coerce')
+print(f"Loaded {len(historical)} historical matches for H2H and form calculations.")
 
-# Calculate league/team attack/defense strengths (simple xG-style)
-if not historical.empty:
-    # Basic attack/defense
-    historical['HomeGoals'] = pd.to_numeric(historical.get('FTHG', 0), errors='coerce')
-    historical['AwayGoals'] = pd.to_numeric(historical.get('FTAG', 0), errors='coerce')
-    
-    avg_home_goals = historical['HomeGoals'].mean() or 1.48
-    avg_away_goals = historical['AwayGoals'].mean() or 1.22
-    
-    # Simple team strengths (can be expanded with more leagues)
-    team_stats = {}
-    # For now, fallback to league averages if historical is limited
-else:
-    avg_home_goals = 1.48
-    avg_away_goals = 1.22
-
-print(f"Using avg home xG: {avg_home_goals:.2f}, avg away xG: {avg_away_goals:.2f}")
-
-# 2. Get upcoming fixtures
+# 2. Upcoming fixtures
 url = "https://www.football-data.co.uk/fixtures.csv"
 df = pd.read_csv(url, dtype=str)
-
 df['Date'] = pd.to_datetime(df['Date'], format='mixed', dayfirst=True, errors='coerce')
 today = datetime.now().date()
 day_after = today + timedelta(days=2)
@@ -64,65 +43,99 @@ upcoming = df[
     (df['Div'].isin(LEAGUES)) & 
     (df['Date'].dt.date >= today) & 
     (df['Date'].dt.date <= day_after) &
-    (pd.to_numeric(df.get('AvgH', 0), errors='coerce') > 1.0)
+    (pd.to_numeric(df.get('AvgH', 0), errors='coerce') > 1)
 ].copy()
 
 print(f"Found {len(upcoming)} upcoming matches.")
 
 results = []
 for _, row in upcoming.iterrows():
+    league = str(row.get('Div', 'UNK'))
+    home_team = str(row.get('HomeTeam', 'Unknown'))
+    away_team = str(row.get('AwayTeam', 'Unknown'))
+    date_str = row['Date'].strftime('%Y-%m-%d %H:%M') if pd.notna(row['Date']) else "TBD"
+
     home_odds = float(row.get('AvgH', 2.0) or 2.0)
     draw_odds = float(row.get('AvgD', 3.5) or 3.5)
     away_odds = float(row.get('AvgA', 3.0) or 3.0)
 
-    # xG-style expected goals (home advantage built in)
-    home_xg = avg_home_goals * 1.1   # slight home boost
-    away_xg = avg_away_goals
+    # Simple xG-style (can be upgraded further)
+    home_xg = 1.55
+    away_xg = 1.25
 
-    # Poisson probabilities
+    # Poisson probs + over 2.5
     max_goals = 6
     home_probs = [poisson.pmf(i, home_xg) for i in range(max_goals + 1)]
     away_probs = [poisson.pmf(i, away_xg) for i in range(max_goals + 1)]
-
-    home_win = draw = away_win = 0.0
+    home_win = draw = away_win = over_25 = 0.0
     for h in range(max_goals + 1):
         for a in range(max_goals + 1):
-            prob = home_probs[h] * away_probs[a]
-            if h > a:
-                home_win += prob
-            elif h == a:
-                draw += prob
-            else:
-                away_win += prob
+            p = home_probs[h] * away_probs[a]
+            if h > a: home_win += p
+            elif h == a: draw += p
+            else: away_win += p
+            if h + a > 2.5: over_25 += p
+    total = home_win + draw + away_win or 1
+    home_win /= total
+    draw /= total
+    away_win /= total
+    over_25 /= total
 
-    total = home_win + draw + away_win
-    if total > 0:
-        home_win /= total
-        draw /= total
-        away_win /= total
-
-    # Value detection
+    # Value
     imp_home = 1 / home_odds if home_odds > 1 else 0
-    imp_draw = 1 / draw_odds if draw_odds > 1 else 0
-    imp_away = 1 / away_odds if away_odds > 1 else 0
-
     value_home = home_win - imp_home if home_win > imp_home + MIN_EDGE else 0
-    value_draw = draw - imp_draw if draw > imp_draw + MIN_EDGE else 0
-    value_away = away_win - imp_away if away_win > imp_away + MIN_EDGE else 0
+    value_draw = draw - (1/draw_odds) if draw > (1/draw_odds) + MIN_EDGE else 0
+    value_away = away_win - (1/away_odds) if away_win > (1/away_odds) + MIN_EDGE else 0
 
-    # Over 2.5 probability
-    over_25 = 0.0
-    for h in range(max_goals + 1):
-        for a in range(max_goals + 1):
-            if h + a > 2.5:
-                over_25 += home_probs[h] * away_probs[a]
-    over_25 /= total if total > 0 else 1
+    # === HISTORICAL DETAILS ===
+    details = {
+        "h2h": [],
+        "home_form": [],
+        "away_form": []
+    }
+
+    if not historical.empty:
+        # Head-to-Head (last 6 meetings)
+        h2h_df = historical[
+            ((historical['HomeTeam'] == home_team) & (historical['AwayTeam'] == away_team)) |
+            ((historical['HomeTeam'] == away_team) & (historical['AwayTeam'] == home_team))
+        ].sort_values('Date', ascending=False).head(6)
+        for _, m in h2h_df.iterrows():
+            details["h2h"].append({
+                "date": m['Date'].strftime('%Y-%m-%d') if pd.notna(m['Date']) else "",
+                "home": m['HomeTeam'],
+                "away": m['AwayTeam'],
+                "score": f"{m.get('FTHG', '?')}–{m.get('FTAG', '?')}",
+                "result": m.get('FTR', '?')
+            })
+
+        # Home team recent form (last 6 home games)
+        home_form_df = historical[
+            (historical['HomeTeam'] == home_team)
+        ].sort_values('Date', ascending=False).head(6)
+        for _, m in home_form_df.iterrows():
+            details["home_form"].append({
+                "opponent": m['AwayTeam'],
+                "score": f"{m.get('FTHG', '?')}–{m.get('FTAG', '?')}",
+                "result": m.get('FTR', '?')
+            })
+
+        # Away team recent form (last 6 away games)
+        away_form_df = historical[
+            (historical['AwayTeam'] == away_team)
+        ].sort_values('Date', ascending=False).head(6)
+        for _, m in away_form_df.iterrows():
+            details["away_form"].append({
+                "opponent": m['HomeTeam'],
+                "score": f"{m.get('FTHG', '?')}–{m.get('FTAG', '?')}",
+                "result": m.get('FTR', '?')
+            })
 
     match = {
-        "league": str(row.get('Div', 'UNK')),
-        "date": row['Date'].strftime('%Y-%m-%d %H:%M') if pd.notna(row['Date']) else "TBD",
-        "home_team": str(row.get('HomeTeam', 'Unknown')),
-        "away_team": str(row.get('AwayTeam', 'Unknown')),
+        "league": league,
+        "date": date_str,
+        "home_team": home_team,
+        "away_team": away_team,
         "home_odds": home_odds,
         "draw_odds": draw_odds,
         "away_odds": away_odds,
@@ -134,7 +147,8 @@ for _, row in upcoming.iterrows():
         "over_25_prob": round(over_25, 4),
         "value_home": round(value_home, 4),
         "value_draw": round(value_draw, 4),
-        "value_away": round(value_away, 4)
+        "value_away": round(value_away, 4),
+        "details": details
     }
     results.append(match)
 
@@ -142,4 +156,4 @@ os.makedirs("data", exist_ok=True)
 with open("data/predictions.json", "w") as f:
     json.dump(results, f, indent=2)
 
-print(f"✅ Saved {len(results)} matches with xG-style predictions!")
+print(f"✅ Saved {len(results)} matches with full historical details!")
