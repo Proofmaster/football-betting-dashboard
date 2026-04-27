@@ -3,36 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Football Value Bets Dashboard</title>
+  <title>Football xG Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-gray-950 text-white min-h-screen">
   <div class="max-w-7xl mx-auto p-6">
-    <div class="flex justify-between items-center mb-8">
-      <div>
-        <h1 class="text-4xl font-bold flex items-center gap-3">🏆 Football Analytics Dashboard</h1>
-        <p class="text-emerald-400">Auto-updated • Multi-league • Value bets & probabilities</p>
-      </div>
-      <div class="text-right text-sm text-gray-400">
-        Last updated: <span id="last-updated" class="font-mono"></span><br>
-        <span class="text-xs">Data from football-data.co.uk • Poisson model</span>
-      </div>
-    </div>
+    <h1 class="text-4xl font-bold mb-2 flex items-center gap-3">📊 Football xG Analytics Dashboard</h1>
+    <p class="text-emerald-400 mb-8">League-specific attack/defense • Expected Goals • Value bets • Charts</p>
 
-    <div id="summary" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8"></div>
+    <div id="summary" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8"></div>
 
-    <div class="flex gap-4 mb-4">
-      <input type="text" id="search" placeholder="Search teams or leagues..." 
-             class="flex-1 bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500">
+    <div class="flex gap-4 mb-6">
+      <input type="text" id="search" placeholder="Search teams/leagues..." class="flex-1 bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:border-emerald-500">
       <select id="sort" class="bg-gray-900 border border-gray-700 rounded-xl px-4 py-3">
-        <option value="edge">Sort by Edge (desc)</option>
+        <option value="edge">Sort by Edge</option>
+        <option value="xg">Sort by Home xG</option>
         <option value="date">Sort by Date</option>
-        <option value="prob">Sort by Home Win Prob</option>
       </select>
     </div>
 
-    <div id="matches" class="space-y-4"></div>
+    <div id="matches" class="space-y-8"></div>
   </div>
 
   <script src="script.js"></script>
