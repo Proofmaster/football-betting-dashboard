@@ -10,21 +10,23 @@
 </head>
 <body class="bg-gray-950 text-white min-h-screen">
   <div class="max-w-7xl mx-auto p-6">
-    <h1 class="text-4xl font-bold mb-2 flex items-center gap-3">📊 Football xG Analytics Dashboard</h1>
-    <p class="text-emerald-400 mb-8">League-specific attack/defense • Expected Goals • Value bets • Charts</p>
+    <h1 class="text-4xl font-bold mb-2">📊 Football xG Analytics Dashboard</h1>
+    <p class="text-emerald-400 mb-8">Click any match for full historical preview</p>
 
     <div id="summary" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8"></div>
 
-    <div class="flex gap-4 mb-6">
-      <input type="text" id="search" placeholder="Search teams/leagues..." class="flex-1 bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:border-emerald-500">
-      <select id="sort" class="bg-gray-900 border border-gray-700 rounded-xl px-4 py-3">
-        <option value="edge">Sort by Edge</option>
-        <option value="xg">Sort by Home xG</option>
-        <option value="date">Sort by Date</option>
-      </select>
-    </div>
+    <div id="matches" class="space-y-6"></div>
+  </div>
 
-    <div id="matches" class="space-y-8"></div>
+  <!-- Detailed Modal -->
+  <div id="modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+    <div class="bg-gray-900 rounded-3xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto">
+      <div class="p-6 border-b border-gray-700 flex justify-between items-center sticky top-0 bg-gray-900">
+        <div id="modal-header" class="text-2xl font-bold"></div>
+        <button onclick="closeModal()" class="text-4xl leading-none text-gray-400 hover:text-white">×</button>
+      </div>
+      <div class="p-8" id="modal-content"></div>
+    </div>
   </div>
 
   <script src="script.js"></script>
