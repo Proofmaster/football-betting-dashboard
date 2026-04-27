@@ -1,20 +1,20 @@
-console.log("=== Dashboard script loaded ===");
+console.log("Dashboard script starting...");
 
 async function loadPredictions() {
   try {
-    console.log("Fetching data from GitHub...");
+    console.log("Fetching predictions.json...");
     const response = await fetch('https://raw.githubusercontent.com/Proofmaster/football-betting-dashboard/main/data/predictions.json');
     
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     
     const matches = await response.json();
-    console.log(`Successfully loaded ${matches.length} matches`);
+    console.log(`Loaded ${matches.length} matches`);
 
     const container = document.getElementById('matches');
     container.innerHTML = '';
 
     if (matches.length === 0) {
-      container.innerHTML = '<p class="text-gray-400 text-center py-12">No upcoming matches at the moment.</p>';
+      container.innerHTML = '<p class="text-gray-400 text-center py-12 text-xl">No upcoming matches right now.</p>';
       return;
     }
 
@@ -22,10 +22,22 @@ async function loadPredictions() {
     const total = matches.length;
     const valueCount = matches.filter(m => Math.max(m.value_home || 0, m.value_draw || 0, m.value_away || 0) > 0).length;
     document.getElementById('summary').innerHTML = `
-      <div class="bg-gray-900 p-6 rounded-2xl text-center"><div class="text-emerald-400 text-sm">MATCHES</div><div class="text-5xl font-bold">${total}</div></div>
-      <div class="bg-gray-900 p-6 rounded-2xl text-center"><div class="text-emerald-400 text-sm">VALUE BETS</div><div class="text-5xl font-bold text-emerald-400">${valueCount}</div></div>
-      <div class="bg-gray-900 p-6 rounded-2xl text-center"><div class="text-emerald-400 text-sm">AVG HOME xG</div><div class="text-5xl font-bold">${(matches.reduce((s,m) => s + (m.home_xg||1.5), 0)/total).toFixed(1)}</div></div>
-      <div class="bg-gray-900 p-6 rounded-2xl text-center"><div class="text-emerald-400 text-sm">OVER 2.5</div><div class="text-5xl font-bold">${(matches.reduce((s,m) => s + (m.over_25_prob||0.5), 0)/total*100).toFixed(0)}%</div></div>
+      <div class="bg-gray-900 p-6 rounded-2xl text-center">
+        <div class="text-emerald-400 text-sm">MATCHES</div>
+        <div class="text-5xl font-bold">${total}</div>
+      </div>
+      <div class="bg-gray-900 p-6 rounded-2xl text-center">
+        <div class="text-emerald-400 text-sm">VALUE BETS</div>
+        <div class="text-5xl font-bold text-emerald-400">${valueCount}</div>
+      </div>
+      <div class="bg-gray-900 p-6 rounded-2xl text-center">
+        <div class="text-emerald-400 text-sm">AVG HOME xG</div>
+        <div class="text-5xl font-bold">${(matches.reduce((s, m) => s + (m.home_xg || 1.5), 0) / total).toFixed(1)}</div>
+      </div>
+      <div class="bg-gray-900 p-6 rounded-2xl text-center">
+        <div class="text-emerald-400 text-sm">OVER 2.5 AVG</div>
+        <div class="text-5xl font-bold">${(matches.reduce((s, m) => s + (m.over_25_prob || 0.5), 0) / total * 100).toFixed(0)}%</div>
+      </div>
     `;
 
     matches.forEach(match => {
@@ -56,16 +68,15 @@ async function loadPredictions() {
       container.appendChild(card);
     });
 
-    console.log("✅ Dashboard rendered successfully");
+    console.log("Dashboard rendered successfully");
 
   } catch (e) {
-    console.error("❌ Load error:", e);
-    document.getElementById('matches').innerHTML = `<p class="text-red-400 text-center py-12">Failed to load data.<br>${e.message}<br><br>Run the GitHub Action again.</p>`;
+    console.error("Load error:", e);
+    document.getElementById('matches').innerHTML = `<p class="text-red-400 text-center py-12">Failed to load data.<br>Run the GitHub Action again.</p>`;
   }
 }
 
 function showDetailModal(match) {
-  console.log("Opening modal for", match.home_team, "vs", match.away_team);
   const modal = document.getElementById('modal');
   const header = document.getElementById('modal-header');
   const content = document.getElementById('modal-content');
@@ -96,8 +107,8 @@ function showDetailModal(match) {
         </div>
       </div>
     </div>
-    <div class="mt-10 text-gray-400 text-center">
-      <p>Full H2H and form data is being improved (multiple seasons loading in backend).</p>
+    <div class="mt-10 text-center text-gray-400">
+      <p>Full historical H2H and form data is being loaded from multiple seasons in the backend.</p>
     </div>
   `;
 
@@ -107,12 +118,13 @@ function showDetailModal(match) {
 }
 
 function closeModal() {
-  document.getElementById('modal').classList.add('hidden');
-  document.getElementById('modal').classList.remove('flex');
+  const modal = document.getElementById('modal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
 }
 
-document.getElementById('modal').addEventListener('click', (e) => {
-  if (e.target.id === 'modal') closeModal();
+document.getElementById('modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
 });
 
 loadPredictions();
