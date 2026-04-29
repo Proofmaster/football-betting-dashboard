@@ -1,160 +1,5 @@
 [
   {
-    "league": "E1",
-    "date": "2026-04-28 00:00",
-    "home_team": "Southampton",
-    "away_team": "Ipswich",
-    "home_odds": 2.18,
-    "draw_odds": 3.5,
-    "away_odds": 3.08,
-    "home_xg": 1.87,
-    "away_xg": 1.23,
-    "home_win_prob": 0.5222,
-    "draw_prob": 0.2267,
-    "away_win_prob": 0.2511,
-    "over_25_prob": 0.5974,
-    "value_home": 0.0635,
-    "value_draw": 0,
-    "value_away": 0,
-    "details": {
-      "h2h": [
-        {
-          "date": "2025-02-01",
-          "home": "Ipswich",
-          "away": "Southampton",
-          "score": "1\u20132"
-        },
-        {
-          "date": "2024-09-21",
-          "home": "Southampton",
-          "away": "Ipswich",
-          "score": "1\u20131"
-        }
-      ],
-      "home_form": [
-        {
-          "opponent": "Arsenal",
-          "score": "1\u20132"
-        },
-        {
-          "opponent": "Man City",
-          "score": "0\u20130"
-        },
-        {
-          "opponent": "Fulham",
-          "score": "1\u20132"
-        },
-        {
-          "opponent": "Aston Villa",
-          "score": "0\u20133"
-        },
-        {
-          "opponent": "Crystal Palace",
-          "score": "1\u20131"
-        },
-        {
-          "opponent": "Wolves",
-          "score": "1\u20132"
-        }
-      ],
-      "away_form": [
-        {
-          "opponent": "Leicester",
-          "score": "2\u20130"
-        },
-        {
-          "opponent": "Everton",
-          "score": "2\u20132"
-        },
-        {
-          "opponent": "Newcastle",
-          "score": "3\u20130"
-        },
-        {
-          "opponent": "Chelsea",
-          "score": "2\u20132"
-        },
-        {
-          "opponent": "Bournemouth",
-          "score": "1\u20132"
-        },
-        {
-          "opponent": "Crystal Palace",
-          "score": "1\u20130"
-        }
-      ]
-    }
-  },
-  {
-    "league": "E2",
-    "date": "2026-04-28 00:00",
-    "home_team": "Northampton",
-    "away_team": "Barnsley",
-    "home_odds": 2.81,
-    "draw_odds": 3.57,
-    "away_odds": 2.25,
-    "home_xg": 1.7,
-    "away_xg": 1.53,
-    "home_win_prob": 0.4194,
-    "draw_prob": 0.2329,
-    "away_win_prob": 0.3478,
-    "over_25_prob": 0.6252,
-    "value_home": 0.0635,
-    "value_draw": 0,
-    "value_away": 0,
-    "details": {
-      "h2h": [],
-      "home_form": [],
-      "away_form": []
-    }
-  },
-  {
-    "league": "E2",
-    "date": "2026-04-28 00:00",
-    "home_team": "Peterboro",
-    "away_team": "Mansfield",
-    "home_odds": 2.49,
-    "draw_odds": 3.5,
-    "away_odds": 2.58,
-    "home_xg": 1.37,
-    "away_xg": 1.14,
-    "home_win_prob": 0.4207,
-    "draw_prob": 0.2674,
-    "away_win_prob": 0.3118,
-    "over_25_prob": 0.4584,
-    "value_home": 0,
-    "value_draw": 0,
-    "value_away": 0,
-    "details": {
-      "h2h": [],
-      "home_form": [],
-      "away_form": []
-    }
-  },
-  {
-    "league": "E2",
-    "date": "2026-04-28 00:00",
-    "home_team": "Stockport",
-    "away_team": "Port Vale",
-    "home_odds": 1.34,
-    "draw_odds": 5.02,
-    "away_odds": 7.8,
-    "home_xg": 1.39,
-    "away_xg": 1.48,
-    "home_win_prob": 0.3553,
-    "draw_prob": 0.2493,
-    "away_win_prob": 0.3954,
-    "over_25_prob": 0.5464,
-    "value_home": 0,
-    "value_draw": 0.0501,
-    "value_away": 0.2672,
-    "details": {
-      "h2h": [],
-      "home_form": [],
-      "away_form": []
-    }
-  },
-  {
     "league": "P1",
     "date": "2026-04-29 00:00",
     "home_team": "Sp Lisbon",
@@ -162,15 +7,15 @@
     "home_odds": 1.12,
     "draw_odds": 7.89,
     "away_odds": 15.63,
-    "home_xg": 1.5,
-    "away_xg": 1.36,
-    "home_win_prob": 0.4066,
-    "draw_prob": 0.2494,
-    "away_win_prob": 0.344,
-    "over_25_prob": 0.5441,
+    "home_xg": 1.6,
+    "away_xg": 1.54,
+    "home_win_prob": 0.3942,
+    "draw_prob": 0.2372,
+    "away_win_prob": 0.3686,
+    "over_25_prob": 0.6065,
     "value_home": 0,
-    "value_draw": 0.1227,
-    "value_away": 0.28,
+    "value_draw": 0.1105,
+    "value_away": 0.3046,
     "details": {
       "h2h": [],
       "home_form": [],
