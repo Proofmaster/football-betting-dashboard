@@ -1,426 +1,5 @@
 [
   {
-    "league": "E0",
-    "date": "2026-05-13 00:00",
-    "home_team": "Man City",
-    "away_team": "Crystal Palace",
-    "home_odds": 1.19,
-    "draw_odds": 7.03,
-    "away_odds": 12.75,
-    "home_xg": 1.93,
-    "away_xg": 1.23,
-    "home_win_prob": 0.5354,
-    "draw_prob": 0.2222,
-    "away_win_prob": 0.2424,
-    "over_25_prob": 0.6101,
-    "value_home": 0,
-    "value_draw": 0.0799,
-    "value_away": 0.164,
-    "details": {
-      "h2h": [
-        {
-          "date": "2025-12-14",
-          "home": "Crystal Palace",
-          "away": "Man City",
-          "score": "0\u20133"
-        },
-        {
-          "date": "2025-04-12",
-          "home": "Man City",
-          "away": "Crystal Palace",
-          "score": "5\u20132"
-        },
-        {
-          "date": "2024-12-07",
-          "home": "Crystal Palace",
-          "away": "Man City",
-          "score": "2\u20132"
-        },
-        {
-          "date": "2024-04-06",
-          "home": "Crystal Palace",
-          "away": "Man City",
-          "score": "2\u20134"
-        },
-        {
-          "date": "2023-12-16",
-          "home": "Man City",
-          "away": "Crystal Palace",
-          "score": "2\u20132"
-        },
-        {
-          "date": "2023-03-11",
-          "home": "Crystal Palace",
-          "away": "Man City",
-          "score": "0\u20131"
-        },
-        {
-          "date": "2022-08-27",
-          "home": "Man City",
-          "away": "Crystal Palace",
-          "score": "4\u20132"
-        },
-        {
-          "date": "2022-03-14",
-          "home": "Crystal Palace",
-          "away": "Man City",
-          "score": "0\u20130"
-        }
-      ],
-      "home_form": [
-        {
-          "opponent": "Brentford",
-          "score": "3\u20130"
-        },
-        {
-          "opponent": "Arsenal",
-          "score": "2\u20131"
-        },
-        {
-          "opponent": "Nott'm Forest",
-          "score": "2\u20132"
-        },
-        {
-          "opponent": "Newcastle",
-          "score": "2\u20131"
-        },
-        {
-          "opponent": "Fulham",
-          "score": "3\u20130"
-        },
-        {
-          "opponent": "Wolves",
-          "score": "2\u20130"
-        }
-      ],
-      "away_form": [
-        {
-          "opponent": "Bournemouth",
-          "score": "3\u20130"
-        },
-        {
-          "opponent": "Liverpool",
-          "score": "3\u20131"
-        },
-        {
-          "opponent": "Tottenham",
-          "score": "1\u20133"
-        },
-        {
-          "opponent": "Man United",
-          "score": "2\u20131"
-        },
-        {
-          "opponent": "Brighton",
-          "score": "0\u20131"
-        },
-        {
-          "opponent": "Nott'm Forest",
-          "score": "1\u20131"
-        }
-      ]
-    }
-  },
-  {
-    "league": "F1",
-    "date": "2026-05-13 00:00",
-    "home_team": "Brest",
-    "away_team": "Strasbourg",
-    "home_odds": 2.68,
-    "draw_odds": 3.47,
-    "away_odds": 2.42,
-    "home_xg": 1.41,
-    "away_xg": 1.04,
-    "home_win_prob": 0.4544,
-    "draw_prob": 0.2677,
-    "away_win_prob": 0.2779,
-    "over_25_prob": 0.4429,
-    "value_home": 0.0812,
-    "value_draw": 0,
-    "value_away": 0,
-    "details": {
-      "h2h": [],
-      "home_form": [],
-      "away_form": []
-    }
-  },
-  {
-    "league": "F1",
-    "date": "2026-05-13 00:00",
-    "home_team": "Lens",
-    "away_team": "Paris SG",
-    "home_odds": 3.3,
-    "draw_odds": 3.91,
-    "away_odds": 1.95,
-    "home_xg": 1.6,
-    "away_xg": 1.1,
-    "home_win_prob": 0.489,
-    "draw_prob": 0.2493,
-    "away_win_prob": 0.2618,
-    "over_25_prob": 0.5056,
-    "value_home": 0.1859,
-    "value_draw": 0,
-    "value_away": 0,
-    "details": {
-      "h2h": [],
-      "home_form": [],
-      "away_form": []
-    }
-  },
-  {
-    "league": "G1",
-    "date": "2026-05-13 00:00",
-    "home_team": "Levadeiakos",
-    "away_team": "OFI Crete",
-    "home_odds": 1.6,
-    "draw_odds": 3.89,
-    "away_odds": 4.66,
-    "home_xg": 1.73,
-    "away_xg": 1.27,
-    "home_win_prob": 0.4814,
-    "draw_prob": 0.2367,
-    "away_win_prob": 0.2819,
-    "over_25_prob": 0.5758,
-    "value_home": 0,
-    "value_draw": 0,
-    "value_away": 0.0673,
-    "details": {
-      "h2h": [],
-      "home_form": [],
-      "away_form": []
-    }
-  },
-  {
-    "league": "G1",
-    "date": "2026-05-13 00:00",
-    "home_team": "Volos NFC",
-    "away_team": "Aris",
-    "home_odds": 3.57,
-    "draw_odds": 3.29,
-    "away_odds": 1.96,
-    "home_xg": 1.33,
-    "away_xg": 1.17,
-    "home_win_prob": 0.4034,
-    "draw_prob": 0.2692,
-    "away_win_prob": 0.3274,
-    "over_25_prob": 0.4558,
-    "value_home": 0.1233,
-    "value_draw": 0,
-    "value_away": 0,
-    "details": {
-      "h2h": [],
-      "home_form": [],
-      "away_form": []
-    }
-  },
-  {
-    "league": "G1",
-    "date": "2026-05-13 00:00",
-    "home_team": "Olympiakos",
-    "away_team": "Panathinaikos",
-    "home_odds": 1.38,
-    "draw_odds": 4.21,
-    "away_odds": 7.59,
-    "home_xg": 2.02,
-    "away_xg": 1.72,
-    "home_win_prob": 0.4515,
-    "draw_prob": 0.214,
-    "away_win_prob": 0.3345,
-    "over_25_prob": 0.7194,
-    "value_home": 0,
-    "value_draw": 0,
-    "value_away": 0.2027,
-    "details": {
-      "h2h": [],
-      "home_form": [],
-      "away_form": []
-    }
-  },
-  {
-    "league": "G1",
-    "date": "2026-05-13 00:00",
-    "home_team": "PAOK",
-    "away_team": "AEK",
-    "home_odds": 1.69,
-    "draw_odds": 3.53,
-    "away_odds": 4.56,
-    "home_xg": 1.31,
-    "away_xg": 1.47,
-    "home_win_prob": 0.3372,
-    "draw_prob": 0.2532,
-    "away_win_prob": 0.4096,
-    "over_25_prob": 0.5252,
-    "value_home": 0,
-    "value_draw": 0,
-    "value_away": 0.1903,
-    "details": {
-      "h2h": [],
-      "home_form": [],
-      "away_form": []
-    }
-  },
-  {
-    "league": "SC0",
-    "date": "2026-05-13 00:00",
-    "home_team": "Hearts",
-    "away_team": "Falkirk",
-    "home_odds": 1.4,
-    "draw_odds": 4.6,
-    "away_odds": 6.82,
-    "home_xg": 1.82,
-    "away_xg": 1.52,
-    "home_win_prob": 0.4485,
-    "draw_prob": 0.227,
-    "away_win_prob": 0.3245,
-    "over_25_prob": 0.6472,
-    "value_home": 0,
-    "value_draw": 0,
-    "value_away": 0.1779,
-    "details": {
-      "h2h": [],
-      "home_form": [],
-      "away_form": []
-    }
-  },
-  {
-    "league": "SC0",
-    "date": "2026-05-13 00:00",
-    "home_team": "Motherwell",
-    "away_team": "Celtic",
-    "home_odds": 4.25,
-    "draw_odds": 4.03,
-    "away_odds": 1.68,
-    "home_xg": 1.36,
-    "away_xg": 1.22,
-    "home_win_prob": 0.4005,
-    "draw_prob": 0.2645,
-    "away_win_prob": 0.3349,
-    "over_25_prob": 0.4761,
-    "value_home": 0.1652,
-    "value_draw": 0,
-    "value_away": 0,
-    "details": {
-      "h2h": [],
-      "home_form": [],
-      "away_form": []
-    }
-  },
-  {
-    "league": "SC0",
-    "date": "2026-05-13 00:00",
-    "home_team": "Rangers",
-    "away_team": "Hibernian",
-    "home_odds": 1.48,
-    "draw_odds": 4.52,
-    "away_odds": 5.62,
-    "home_xg": 1.41,
-    "away_xg": 1.2,
-    "home_win_prob": 0.418,
-    "draw_prob": 0.2618,
-    "away_win_prob": 0.3202,
-    "over_25_prob": 0.4836,
-    "value_home": 0,
-    "value_draw": 0,
-    "value_away": 0.1423,
-    "details": {
-      "h2h": [],
-      "home_form": [],
-      "away_form": []
-    }
-  },
-  {
-    "league": "SP1",
-    "date": "2026-05-13 00:00",
-    "home_team": "Espanol",
-    "away_team": "Ath Bilbao",
-    "home_odds": 2.61,
-    "draw_odds": 3.21,
-    "away_odds": 2.69,
-    "home_xg": 1.85,
-    "away_xg": 1.63,
-    "home_win_prob": 0.433,
-    "draw_prob": 0.2232,
-    "away_win_prob": 0.3438,
-    "over_25_prob": 0.674,
-    "value_home": 0,
-    "value_draw": 0,
-    "value_away": 0,
-    "details": {
-      "h2h": [],
-      "home_form": [],
-      "away_form": []
-    }
-  },
-  {
-    "league": "SP1",
-    "date": "2026-05-13 00:00",
-    "home_team": "Villarreal",
-    "away_team": "Sevilla",
-    "home_odds": 2.09,
-    "draw_odds": 3.29,
-    "away_odds": 3.5,
-    "home_xg": 1.47,
-    "away_xg": 1.06,
-    "home_win_prob": 0.4654,
-    "draw_prob": 0.2616,
-    "away_win_prob": 0.2729,
-    "over_25_prob": 0.4634,
-    "value_home": 0,
-    "value_draw": 0,
-    "value_away": 0,
-    "details": {
-      "h2h": [],
-      "home_form": [],
-      "away_form": []
-    }
-  },
-  {
-    "league": "SP1",
-    "date": "2026-05-13 00:00",
-    "home_team": "Alaves",
-    "away_team": "Barcelona",
-    "home_odds": 3.09,
-    "draw_odds": 3.75,
-    "away_odds": 2.1,
-    "home_xg": 1.52,
-    "away_xg": 1.2,
-    "home_win_prob": 0.4461,
-    "draw_prob": 0.2536,
-    "away_win_prob": 0.3003,
-    "over_25_prob": 0.5107,
-    "value_home": 0.1225,
-    "value_draw": 0,
-    "value_away": 0,
-    "details": {
-      "h2h": [],
-      "home_form": [],
-      "away_form": []
-    }
-  },
-  {
-    "league": "SP1",
-    "date": "2026-05-13 00:00",
-    "home_team": "Getafe",
-    "away_team": "Mallorca",
-    "home_odds": 2.19,
-    "draw_odds": 3.07,
-    "away_odds": 3.51,
-    "home_xg": 1.44,
-    "away_xg": 1.39,
-    "home_win_prob": 0.3855,
-    "draw_prob": 0.2515,
-    "away_win_prob": 0.363,
-    "over_25_prob": 0.5371,
-    "value_home": 0,
-    "value_draw": 0,
-    "value_away": 0.0781,
-    "details": {
-      "h2h": [],
-      "home_form": [],
-      "away_form": []
-    }
-  },
-  {
     "league": "SP1",
     "date": "2026-05-14 00:00",
     "home_team": "Valencia",
@@ -428,13 +7,13 @@
     "home_odds": 2.17,
     "draw_odds": 3.33,
     "away_odds": 3.23,
-    "home_xg": 1.62,
-    "away_xg": 1.17,
-    "home_win_prob": 0.4777,
-    "draw_prob": 0.2465,
-    "away_win_prob": 0.2758,
-    "over_25_prob": 0.5274,
-    "value_home": 0,
+    "home_xg": 2.08,
+    "away_xg": 1.48,
+    "home_win_prob": 0.5126,
+    "draw_prob": 0.2128,
+    "away_win_prob": 0.2746,
+    "over_25_prob": 0.6881,
+    "value_home": 0.0518,
     "value_draw": 0,
     "value_away": 0,
     "details": {
@@ -451,15 +30,15 @@
     "home_odds": 2.06,
     "draw_odds": 3.64,
     "away_odds": 3.21,
-    "home_xg": 1.24,
-    "away_xg": 1.23,
-    "home_win_prob": 0.3663,
-    "draw_prob": 0.2721,
-    "away_win_prob": 0.3615,
-    "over_25_prob": 0.4481,
+    "home_xg": 1.35,
+    "away_xg": 1.33,
+    "home_win_prob": 0.3748,
+    "draw_prob": 0.2595,
+    "away_win_prob": 0.3656,
+    "over_25_prob": 0.501,
     "value_home": 0,
     "value_draw": 0,
-    "value_away": 0.05,
+    "value_away": 0.0541,
     "details": {
       "h2h": [],
       "home_form": [],
@@ -474,15 +53,15 @@
     "home_odds": 1.23,
     "draw_odds": 6.28,
     "away_odds": 10.42,
-    "home_xg": 1.8,
-    "away_xg": 1.51,
-    "home_win_prob": 0.4461,
-    "draw_prob": 0.2282,
-    "away_win_prob": 0.3256,
-    "over_25_prob": 0.6413,
+    "home_xg": 1.28,
+    "away_xg": 1.64,
+    "home_win_prob": 0.2993,
+    "draw_prob": 0.2429,
+    "away_win_prob": 0.4579,
+    "over_25_prob": 0.5578,
     "value_home": 0,
-    "value_draw": 0.069,
-    "value_away": 0.2297,
+    "value_draw": 0.0836,
+    "value_away": 0.3619,
     "details": {
       "h2h": [],
       "home_form": [],
